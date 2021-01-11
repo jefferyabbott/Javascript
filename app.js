@@ -114,12 +114,9 @@ function compareUserToDino() {
         const heightIn = document.querySelector("#inches").value
         const weight = document.querySelector("#weight").value
         const diet = document.querySelector("#diet").value
-    
-        //Creating and returning a human object
-        return new Human(name, heightFt, heightIn, weight, diet, '/images/human.png');
-    })();
+        return new Human(name, heightFt, heightIn, weight, diet, '/images/human.png')
+    })()
 
-    console.log(human)
 
     // Create Dino Compare Method 1
     // NOTE: Weight in JSON file is in lbs, height in inches. 
