@@ -27,6 +27,12 @@
         // Add tiles to DOM
 
     // Remove form from screen
+    function removeForm() {
+        document.querySelector('#dino-compare').style.visibility = "hidden"
+    }
+
 
 
 // On button click, prepare and display infographic
+const button = document.querySelector('#btn')
+button.addEventListener('click', removeForm)
