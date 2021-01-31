@@ -131,11 +131,36 @@ function compareUserToDino() {
 
 
     // Generate Tiles for each Dino in Array
-  
+    const grid = document.querySelector('#grid')
+    for (dino of dinos) {
+        
+        // set species
+        const gridItemTitle = document.createElement('h2')
+        gridItemTitle.textContent = dino.species
+
+        // set image
+        const gridItemImg = document.createElement('img')
+        gridItemImg.src = `images/${dino.species}.png`
+
+        // set fact
+        const gridItemFact = document.createElement('p')
+        gridItemFact.textContent = dino.fact
+
+        // assemble tile
+        const gridItem = document.createElement('div')
+        gridItem.className = 'grid-item'
+        gridItem.appendChild(gridItemTitle)
+        gridItem.appendChild(gridItemImg)
+        gridItem.appendChild(gridItemFact)
+        
         // Add tiles to DOM
+        grid.appendChild(gridItem)
+    }
+  
+        
 
     // Remove form from screen
-    document.querySelector('#dino-compare').style.visibility = "hidden"
+    document.querySelector('#dino-compare').style.display = 'none'
 }
 
 
