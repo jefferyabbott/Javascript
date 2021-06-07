@@ -1,5 +1,4 @@
 // data
-
 const dinoData = [
     {
         "species": "Triceratops",
@@ -107,8 +106,7 @@ class Dino {
             return `You and ${this.species} are the same height.`
         }
     }
-
-    
+   
     // Create Dino Compare Method 3
     // NOTE: Weight in JSON file is in lbs, height in inches.
     compareWeight(human) {
@@ -122,15 +120,12 @@ class Dino {
         }
     }
 
-
-    getRandomFact(human) {
-        return this.compareWeight(human)
-    }
 }
 
 
 // Create Dino Objects
 let dinos = dinoData.map(d => new Dino(d, `/images/${d.species.toLowerCase()}.png`))
+
 
 // randomize the order of the dino array
 // https://stackoverflow.com/questions/37165469/print-array-in-random-order
@@ -141,7 +136,6 @@ dinos.sort(function() {
 
 
 // Create Human Object
-
 function Human(name, heightFt, heightIn, weight, diet, image) {
     this.name = name
     this.height = (heightFt * 12) + heightIn
@@ -149,8 +143,6 @@ function Human(name, heightFt, heightIn, weight, diet, image) {
     this.diet = diet
     this.image = image
 }
-
-
 
 
 
@@ -165,11 +157,6 @@ function compareUserToDino() {
         const diet = document.querySelector("#diet").value
         return new Human(name, heightFt, heightIn, weight, diet, '/images/human.png')
     })()
-    
-
-
-
-    
 
 
     // Generate Tiles for each Dino in Array
@@ -195,7 +182,6 @@ function compareUserToDino() {
             gridItemFact.textContent = facts[Math.floor(Math.random()*facts.length)]
         }
         
-
         // assemble tile
         const gridItem = document.createElement('div')
         gridItem.className = 'grid-item'
@@ -214,18 +200,14 @@ function compareUserToDino() {
     const gridItemImg = document.createElement('img')
     gridItemImg.src = human.image
 
-    const gridItemFact = document.createElement('p')
-    gridItemFact.innerHTML = ''
-
     const gridItem = document.createElement('div')
     gridItem.className = 'grid-item'
     gridItem.appendChild(gridItemTitle)
     gridItem.appendChild(gridItemImg)
-    gridItem.appendChild(gridItemFact)
   
-    grid.insertBefore(gridItem, grid.children[4])
+    // place human in center of grid
+    grid.insertBefore(gridItem, grid.children[grid.children.length / 2])
         
-
     // Remove form from screen
     document.querySelector('#dino-compare').style.display = 'none'
 }
