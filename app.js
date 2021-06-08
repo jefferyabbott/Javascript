@@ -75,6 +75,9 @@ const dinoData = [
 ];
 
 
+// hide startOver button
+document.querySelector('#startOver').style.display = 'none';
+
 
 /**
 * @description Represents a Dinosaur object
@@ -165,6 +168,10 @@ function Human(name, heightFt, heightIn, weight, diet, image) {
 
 
 function compareUserToDino() {
+
+    // show startOver button
+    document.querySelector('#startOver').style.display = 'inline-block';
+
     var humanDataIsValid = true;
     var errorMsg = '';
 
@@ -189,19 +196,19 @@ function compareUserToDino() {
             humanDataIsValid = false;
         }
         const heightFt = parseInt(form.heightFt.value);
-        if (isNaN(heightFt)) {
+        if (isNaN(heightFt) || heightFt === 0) {
             form.heightFt.classList.add('invalidInput')
             errorMsg += 'Height in feet is required\n';
             humanDataIsValid = false;
         }
         const heightIn = parseInt(form.heightIn.value);
-        if (isNaN(heightIn)) {
+        if (isNaN(heightIn) || heightIn === 0) {
             form.heightIn.classList.add('invalidInput')
             errorMsg += 'Height in inches is required\n';
             humanDataIsValid = false;
         }
         const weight = parseInt(form.weight.value);
-        if (isNaN(weight)) {
+        if (isNaN(weight) || weight === 0) {
             form.weight.classList.add('invalidInput');
             errorMsg += 'Weight is required\n';
             humanDataIsValid = false;
@@ -269,6 +276,9 @@ function compareUserToDino() {
         
     // Remove form from screen
     document.querySelector('#dino-compare').style.display = 'none';
+
+    // Show start over button
+    document.querySelector('#startOver').style.display = 'black';
     }
     
 }
@@ -280,3 +290,13 @@ document.querySelector('#btn').addEventListener('click', compareUserToDino);
 
 
 
+function startOver() {
+    document.querySelector('#startOver').style.display = 'none';
+    document.querySelector('#grid').style.display = 'none';
+    document.querySelector('#dino-compare').style.display = 'inline-block';
+    document.querySelector("#name").value = '';
+    document.querySelector("#feet").value = '';
+    document.querySelector("#inches").value = '';
+    document.querySelector("#weight").value = '';
+    
+}
