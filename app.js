@@ -273,7 +273,7 @@ function compareUserToDino() {
     document.querySelector('#dino-compare').style.display = 'none';
 
     // Show start over button
-    document.querySelector('#startOver').style.display = 'black';
+    document.querySelector('#startOver').style.display = 'inline-block';
     }
 }
 
