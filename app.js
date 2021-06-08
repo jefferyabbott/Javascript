@@ -140,10 +140,8 @@ class Dino {
 }
 
 
-
 // Create Dino Objects
 let dinos = dinoData.map(d => new Dino(d, `/images/${d.species.toLowerCase()}.png`));
-
 
 
 /**
@@ -153,7 +151,6 @@ let dinos = dinoData.map(d => new Dino(d, `/images/${d.species.toLowerCase()}.pn
 dinos.sort(function() {
     return .5 - Math.random();
 })
-
 
 
 // Create Human Object
@@ -166,9 +163,7 @@ function Human(name, heightFt, heightIn, weight, diet, image) {
 }
 
 
-
 function compareUserToDino() {
-
     // show startOver button
     document.querySelector('#startOver').style.display = 'inline-block';
 
@@ -225,39 +220,38 @@ function compareUserToDino() {
 
     if (human) {
         // Generate Tiles for each Dino in Array
-    const grid = document.querySelector('#grid');
-    for (dino of dinos) {
+        const grid = document.querySelector('#grid');
+        for (dino of dinos) {
         
-        // set species
-        const gridItemTitle = document.createElement('h2');
-        gridItemTitle.textContent = dino.species;
+            // set species
+            const gridItemTitle = document.createElement('h2');
+            gridItemTitle.textContent = dino.species;
 
-        // set image
-        const gridItemImg = document.createElement('img');
-        gridItemImg.src = `images/${dino.species}.png`;
+            // set image
+            const gridItemImg = document.createElement('img');
+            gridItemImg.src = `images/${dino.species}.png`;
 
-        // set fact
-        const gridItemFact = document.createElement('p');
-        if (dino.species === 'Pigeon') {
-            gridItemFact.textContent = dino.fact;
-        } else {
-            const facts = [dino.fact, dino.compareDiet(human), dino.compareWeight(human), dino.compareHeight(human)];
-            // get random item from an array
-            // https://www.w3resource.com/javascript-exercises/javascript-array-exercise-35.php
-            gridItemFact.textContent = facts[Math.floor(Math.random()*facts.length)];
+            // set fact
+            const gridItemFact = document.createElement('p');
+            if (dino.species === 'Pigeon') {
+                gridItemFact.textContent = dino.fact;
+            } else {
+                const facts = [dino.fact, dino.compareDiet(human), dino.compareWeight(human), dino.compareHeight(human)];
+                // get random item from an array
+                // https://www.w3resource.com/javascript-exercises/javascript-array-exercise-35.php
+                gridItemFact.textContent = facts[Math.floor(Math.random()*facts.length)];
+            }
+        
+            // assemble tile
+            const gridItem = document.createElement('div');
+            gridItem.className = 'grid-item';
+            gridItem.appendChild(gridItemTitle);
+            gridItem.appendChild(gridItemImg);
+            gridItem.appendChild(gridItemFact);
+            
+            // Add tiles to DOM
+            grid.appendChild(gridItem);
         }
-        
-        // assemble tile
-        const gridItem = document.createElement('div');
-        gridItem.className = 'grid-item';
-        gridItem.appendChild(gridItemTitle);
-        gridItem.appendChild(gridItemImg);
-        gridItem.appendChild(gridItemFact);
-        
-        // Add tiles to DOM
-        grid.appendChild(gridItem);
-    }
-
 
     // add human to center tile
     const gridItemTitle = document.createElement('h2');
@@ -280,14 +274,11 @@ function compareUserToDino() {
     // Show start over button
     document.querySelector('#startOver').style.display = 'black';
     }
-    
 }
-
 
 
 // On button click, prepare and display infographic
 document.querySelector('#btn').addEventListener('click', compareUserToDino);
-
 
 
 function startOver() {
@@ -298,5 +289,4 @@ function startOver() {
     document.querySelector('#feet').value = '';
     document.querySelector('#inches').value = '';
     document.querySelector('#weight').value = '';
-    
 }
