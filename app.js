@@ -164,11 +164,9 @@ function Human(name, heightFt, heightIn, weight, diet, image) {
 
 
 function compareUserToDino() {
-    // show startOver button
-    document.querySelector('#startOver').style.display = 'inline-block';
 
-    var humanDataIsValid = true;
-    var errorMsg = '';
+    let humanDataIsValid = true;
+    let errorMsg = '';
 
     const form = {
         name: document.querySelector('#name'),
@@ -178,7 +176,7 @@ function compareUserToDino() {
     };
 
     // remove potential invalidInput error class from form elements
-    for (var e in form) {
+    for (let e in form) {
         form[e].classList.remove('invalidInput');
     }
 
@@ -213,6 +211,9 @@ function compareUserToDino() {
             alert(errorMsg);
             return null;
         }
+
+        // show startOver button
+        document.querySelector('#startOver').style.display = 'inline-block';
 
         const diet = document.querySelector('#diet').value;
         return new Human(name, heightFt, heightIn, weight, diet, '/images/human.png');
