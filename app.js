@@ -176,10 +176,10 @@ function compareUserToDino() {
     var errorMsg = '';
 
     const form = {
-        name: document.querySelector("#name"),
-        heightFt: document.querySelector("#feet"),
-        heightIn: document.querySelector("#inches"),
-        weight: document.querySelector("#weight")
+        name: document.querySelector('#name'),
+        heightFt: document.querySelector('#feet'),
+        heightIn: document.querySelector('#inches'),
+        weight: document.querySelector('#weight')
     };
 
     // remove potential invalidInput error class from form elements
@@ -219,7 +219,7 @@ function compareUserToDino() {
             return null;
         }
 
-        const diet = document.querySelector("#diet").value;
+        const diet = document.querySelector('#diet').value;
         return new Human(name, heightFt, heightIn, weight, diet, '/images/human.png');
     })();
 
@@ -294,9 +294,9 @@ function startOver() {
     document.querySelector('#startOver').style.display = 'none';
     document.querySelector('#grid').style.display = 'none';
     document.querySelector('#dino-compare').style.display = 'inline-block';
-    document.querySelector("#name").value = '';
-    document.querySelector("#feet").value = '';
-    document.querySelector("#inches").value = '';
-    document.querySelector("#weight").value = '';
+    document.querySelector('#name').value = '';
+    document.querySelector('#feet').value = '';
+    document.querySelector('#inches').value = '';
+    document.querySelector('#weight').value = '';
     
 }
