@@ -165,17 +165,59 @@ function Human(name, heightFt, heightIn, weight, diet, image) {
 
 
 function compareUserToDino() {
+    var humanDataIsValid = true;
+    var errorMsg = '';
+
+    const form = {
+        name: document.querySelector("#name"),
+        heightFt: document.querySelector("#feet"),
+        heightIn: document.querySelector("#inches"),
+        weight: document.querySelector("#weight")
+    };
+
+    // remove potential invalidInput error class from form elements
+    for (var e in form) {
+        form[e].classList.remove('invalidInput');
+    }
+
     // Use IIFE to get human data from form
-    const human = (function createHumanObject(){
-        const name = document.querySelector("#name").value;
-        const heightFt = document.querySelector("#feet").value;
-        const heightIn = document.querySelector("#inches").value;
-        const weight = document.querySelector("#weight").value;
+    const human = (function createHumanObject() {
+        const name = form.name.value;
+        if (name === '' || typeof name !== 'string') {
+            form.name.classList.add('invalidInput')
+            errorMsg += 'Name is required\n';
+            humanDataIsValid = false;
+        }
+        const heightFt = parseInt(form.heightFt.value);
+        if (isNaN(heightFt)) {
+            form.heightFt.classList.add('invalidInput')
+            errorMsg += 'Height in feet is required\n';
+            humanDataIsValid = false;
+        }
+        const heightIn = parseInt(form.heightIn.value);
+        if (isNaN(heightIn)) {
+            form.heightIn.classList.add('invalidInput')
+            errorMsg += 'Height in inches is required\n';
+            humanDataIsValid = false;
+        }
+        const weight = parseInt(form.weight.value);
+        if (isNaN(weight)) {
+            form.weight.classList.add('invalidInput');
+            errorMsg += 'Weight is required\n';
+            humanDataIsValid = false;
+        }
+
+        if (!humanDataIsValid) {
+            alert(errorMsg);
+            return null;
+        }
+
         const diet = document.querySelector("#diet").value;
         return new Human(name, heightFt, heightIn, weight, diet, '/images/human.png');
     })();
 
-    // Generate Tiles for each Dino in Array
+    if (human) {
+        // Generate Tiles for each Dino in Array
     const grid = document.querySelector('#grid');
     for (dino of dinos) {
         
@@ -227,6 +269,8 @@ function compareUserToDino() {
         
     // Remove form from screen
     document.querySelector('#dino-compare').style.display = 'none';
+    }
+    
 }
 
 

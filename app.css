@@ -172,3 +172,8 @@ select {
     display: block;
     font-size: 0.7em;
 }
+
+/* class to mark input field as invalid */
+.invalidInput {
+    border: 1px solid red;
+}
