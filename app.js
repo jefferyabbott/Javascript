@@ -273,7 +273,7 @@ function compareUserToDino() {
     document.querySelector('#dino-compare').style.display = 'none';
 
     // Show start over button
-    document.querySelector('#startOver').style.display = 'inline-block';
+    document.querySelector('#startOver').style.display = 'inblock';
     }
 }
 
@@ -283,8 +283,9 @@ document.querySelector('#btn').addEventListener('click', compareUserToDino);
 
 
 function startOver() {
+    const grid = document.querySelector('#grid');
+    grid.innerHTML = '';
     document.querySelector('#startOver').style.display = 'none';
-    document.querySelector('#grid').style.display = 'none';
     document.querySelector('#dino-compare').style.display = 'inline-block';
     document.querySelector('#name').value = '';
     document.querySelector('#feet').value = '';
